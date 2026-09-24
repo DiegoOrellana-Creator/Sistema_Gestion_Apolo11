@@ -3,7 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
 class Marca extends Model
 {
@@ -17,12 +17,21 @@ class Marca extends Model
         'nombre',
     ];
 
-    public function productos(): HasMany
+    /*
+    |--------------------------------------------------------------------------
+    | PROVEEDORES
+    |--------------------------------------------------------------------------
+    */
+
+    public function proveedores(): BelongsToMany
     {
-        return $this->hasMany(
-            Producto::class,
-            'marca_id',
-            'id_marca'
+        return $this->belongsToMany(
+            Proveedor::class,
+            'proveedor_marca',
+            'id_marca',
+            'id_proveedor',
+            'id_marca',
+            'id_proveedor'
         );
     }
 }

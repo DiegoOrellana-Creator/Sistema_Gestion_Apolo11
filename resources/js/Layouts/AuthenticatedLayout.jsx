@@ -47,6 +47,8 @@ export default function AuthenticatedLayout({ header, children }) {
                     <NavItem
                         label="Compras"
                         icon="cart"
+                        href={route('compras.index')}
+                        routeName="compras.*"
                     />
 
                     {/* ================================================= */}
@@ -56,6 +58,8 @@ export default function AuthenticatedLayout({ header, children }) {
                     <NavItem
                         label="Ventas"
                         icon="sales"
+                        href={route('ventas.index')}
+                        routeName="ventas.*"
                     />
 
                     {/* ================================================= */}
@@ -102,13 +106,15 @@ export default function AuthenticatedLayout({ header, children }) {
                             {/* CATEGORÍAS */}
                             <SubItem
                                 label="Categorías"
-                                href="#"
+                                href={route('categorias.index')}
+                                routeName="categorias.*"
                             />
 
                             {/* MARCAS */}
                             <SubItem
                                 label="Marcas"
-                                href="#"
+                                href={route('marcas.index')}
+                                routeName="marcas.*"
                             />
 
                         </div>
@@ -231,6 +237,8 @@ export default function AuthenticatedLayout({ header, children }) {
                     <NavItem
                         label="Proveedores"
                         icon="building"
+                        href={route('proveedores.index')}
+                        routeName="proveedores.*"
                     />
 
                     {/* ================================================= */}
@@ -240,6 +248,7 @@ export default function AuthenticatedLayout({ header, children }) {
                     <NavItem
                         label="Reportes"
                         icon="report"
+                        href="#"
                     />
 
                 </nav>
@@ -432,6 +441,7 @@ function NavIcon({ type }) {
 
             return (
                 <svg {...common}>
+
                     <path
                         strokeLinecap="round"
                         strokeLinejoin="round"
@@ -452,6 +462,7 @@ function NavIcon({ type }) {
                         strokeWidth="2"
                         d="M9 20v-6h6v6"
                     />
+
                 </svg>
             );
 

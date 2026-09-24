@@ -2,11 +2,14 @@
 
 use App\Http\Controllers\CategoriaAtributoController;
 use App\Http\Controllers\CategoriaController;
+use App\Http\Controllers\CompraController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\MarcaController;
 use App\Http\Controllers\PersonalController;
 use App\Http\Controllers\ProductoController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProveedorController;
+use App\Http\Controllers\VentaController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -100,6 +103,102 @@ Route::middleware(['auth'])->group(function () {
 
     /*
     |--------------------------------------------------------------------------
+    | Ventas
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/ventas', [
+        VentaController::class,
+        'index'
+    ])->name('ventas.index');
+
+    Route::get('/ventas/create', [
+        VentaController::class,
+        'create'
+    ])->name('ventas.create');
+
+    Route::post('/ventas', [
+        VentaController::class,
+        'store'
+    ])->name('ventas.store');
+
+    Route::get('/ventas/{venta}', [
+        VentaController::class,
+        'show'
+    ])->name('ventas.show');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Compras
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/compras', [
+        CompraController::class,
+        'index'
+    ])->name('compras.index');
+
+    Route::get('/compras/create', [
+        CompraController::class,
+        'create'
+    ])->name('compras.create');
+
+    Route::post('/compras', [
+        CompraController::class,
+        'store'
+    ])->name('compras.store');
+
+    Route::get('/compras/{compra}', [
+        CompraController::class,
+        'show'
+    ])->name('compras.show');
+
+
+    /*
+    |--------------------------------------------------------------------------
+    | Proveedores
+    |--------------------------------------------------------------------------
+    */
+
+    Route::get('/proveedores', [
+        ProveedorController::class,
+        'index'
+    ])->name('proveedores.index');
+
+    Route::get('/proveedores/create', [
+        ProveedorController::class,
+        'create'
+    ])->name('proveedores.create');
+
+    Route::post('/proveedores', [
+        ProveedorController::class,
+        'store'
+    ])->name('proveedores.store');
+
+    Route::get('/proveedores/{proveedor}', [
+        ProveedorController::class,
+        'show'
+    ])->name('proveedores.show');
+
+    Route::get('/proveedores/{proveedor}/edit', [
+        ProveedorController::class,
+        'edit'
+    ])->name('proveedores.edit');
+
+    Route::put('/proveedores/{proveedor}', [
+        ProveedorController::class,
+        'update'
+    ])->name('proveedores.update');
+
+    Route::delete('/proveedores/{proveedor}', [
+        ProveedorController::class,
+        'destroy'
+    ])->name('proveedores.destroy');
+
+
+    /*
+    |--------------------------------------------------------------------------
     | Categorías
     |--------------------------------------------------------------------------
     */
@@ -133,6 +232,7 @@ Route::middleware(['auth'])->group(function () {
         CategoriaController::class,
         'destroy'
     ])->name('categorias.destroy');
+
 
     /*
     |--------------------------------------------------------------------------
@@ -204,5 +304,6 @@ Route::middleware(['auth'])->group(function () {
         'destroy'
     ])->name('profile.destroy');
 });
+
 
 require __DIR__.'/auth.php';
